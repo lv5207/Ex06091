@@ -27,13 +27,32 @@ private String stringUrl;
         wV.getSettings().setJavaScriptEnabled(true);
     }
 
+    /**
+     * Loads the URL entered by the user.
+     * <p>
+     *
+     * @param view The button - display component
+     */
     public void goToUrl(View view) {
         stringUrl = etUrl.getText().toString();
         wV.loadUrl(stringUrl);
         wV.setWebViewClient(new MyWebViewClient());
     }
 
+    /**
+     * @author      Lavi Vainer lv5207@bs.amalnet.k12.il
+     * @version     1.0
+     * @since       09/03/2026
+     *
+     * A class that makes a WebView an independent WebClient
+     */
     private class MyWebViewClient extends WebViewClient {
+        /**
+         * Prevents the URL from being loaded in a browser
+         * @param view The WebView that is initiating the callback.
+         * @param url The URL to be loaded.
+         * @return boolean - true
+         */
         public boolean shouldOverrideUrlLoading(WebView view, String url)
         {
             view.loadUrl(url);
